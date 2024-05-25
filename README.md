@@ -256,4 +256,57 @@ public class Main extends JavaPlugin {
 }
 ```
 
-### To be continued............................................................
+### 3.6. Editing translations
+To edit a translation, you need at least:
+- One already created language
+- A key that you want to edit
+- Start the server at least once
+
+After you have all of these, you can edit the translations in the `lang_{code}.properties` files in the `languages` folder in your plugin's data folder. The `lang_{code}.properties` files are automatically generated when you start the server for the first time. Here is an example of how you can edit a translation:
+
+```properties
+# lang_en.properties
+text.hello=Hello {0}!
+```
+
+In this example, we are editing the translation for the key `text.hello` in the `lang_en.properties` file. We are changing the value from `Hello!` to `Hello {0}!`. This will change the translation for the key `text.hello` in the English language to `Hello {0}!`.
+It is important to note that you need to restart the server after editing the translations in order for the changes to take effect. Maybe in the future, I will add a feature to reload the translations without restarting the server.
+
+### 3.7. Deleting a language
+To delete a language, you can use the `LanguageService` class. The `LanguageService` class has a method called `deleteLanguage` that takes a `String languageCode` as a parameter. This method will delete the language with the given code from the database. Here is an example of how you can delete a language:
+
+```java
+package dev.whynotmax.languagesystem.example;
+
+import dev.whynotmax.languagesystem.LanguageSystemBuilder;
+import dev.whynotmax.languagesystem.LanguageSystem;
+import dev.whynotmax.languagesystem.service.LanguageService;
+import dev.whynotmax.languagesystem.model.Language;
+import lombok.Getter;
+
+@Getter
+public class Main extends JavaPlugin {
+    private LanguageSystem languageSystem;
+    private LanguageService languageService;
+    
+    @Override
+    public void onEnable() {
+        languageSystem = new LanguageSystemBuilder(this)
+            .withMongoCredentials(Credentials.of("mongodb://localhost:27017", "languageSystem"))
+            .build();
+        
+        languageService = new LanguageService(this, languageSystem);
+        
+        languageService.deleteLanguage("en");
+        //or
+        Language english = languageService.getLanguageByCode("en");
+        languageService.deleteLanguage(english);
+    }
+}
+```
+
+### That's it!
+You have successfully created a multi-language system for your application using the LanguageSystem library. You can now use this library to create a multi-language system for your Minecraft plugin or any other application. If you have any questions or need help, feel free to ask in the comments below. I hope you found this tutorial helpful and that you learned something new. Thank you for reading!
+
+## 4. License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
