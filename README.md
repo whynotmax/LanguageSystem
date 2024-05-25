@@ -309,4 +309,4 @@ public class Main extends JavaPlugin {
 You have successfully created a multi-language system for your application using the LanguageSystem library. You can now use this library to create a multi-language system for your Minecraft plugin or any other application. If you have any questions or need help, feel free to ask in the comments below. I hope you found this tutorial helpful and that you learned something new. Thank you for reading!
 
 ## 4. License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
