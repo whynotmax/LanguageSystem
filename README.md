@@ -16,7 +16,7 @@ This project is built using Java 16 and uses MongoDB as the database to store th
 - MongoDB Database
 - Lombok
 - Spigot API (to use in Minecraft plugins)
-- en2do (Entity-To-Document made by (Koboo)[https://github.com/Koboo/])
+- en2do ([Entity-To-Document made by Koboo](https://github.com/Koboo/))
 
 ## 2. Installation
 You can install the package via maven and gradle.
