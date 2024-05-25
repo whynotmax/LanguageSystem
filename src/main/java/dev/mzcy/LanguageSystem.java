@@ -84,7 +84,7 @@ public class LanguageSystem {
      * @param key                       the key
      * @param languageCode              the language code
      * @param replacements              the replacements
-     * @return                          the translated string
+     * @return                          the translated string, or the key if the translation is not found
      * @throws IllegalArgumentException if the language with the specified language code does not exist
      * <br>
      * @apiNote             This method is for internal use only, and it can be changed or removed at any time. Use {@link LanguageService#getTranslation(String, String, String...)} instead.
