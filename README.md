@@ -26,13 +26,13 @@ You can install the package via maven and gradle.
 <dependency>
     <groupId>com.github.whynotmax</groupId>
     <artifactId>LanguageSystem</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 ### 2.1. Gradle
 ```gradle
-implementation 'com.github.whynotmax:LanguageSystem:1.0.0'
+implementation 'com.github.whynotmax:LanguageSystem:1.0.1'
 ```
 
 ## 3. Usage
