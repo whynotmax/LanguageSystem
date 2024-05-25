@@ -107,8 +107,7 @@ public class LanguageSystem {
     }
 
 
-    public void create(Language.LanguageBuilder languageBuilder) {
-        Language newLanguage = languageBuilder.build();
+    public void create(Language newLanguage) {
         newLanguage.setLanguageFile(new File("plugins/" + javaPlugin.getName() + "/languages/lang_" + newLanguage.getLanguageCode() + ".properties"));
         //Check if the language already exists
         for (Language language : loadedLanguages) {

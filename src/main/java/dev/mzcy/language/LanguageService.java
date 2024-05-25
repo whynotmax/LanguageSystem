@@ -23,8 +23,8 @@ public class LanguageService {
         return languageSystem.getTranslation(key, languageCode, replacements);
     }
 
-    public void create(Language.LanguageBuilder languageBuilder) {
-        languageSystem.create(languageBuilder);
+    public void create(Language language) {
+        languageSystem.create(language);
     }
 
 
