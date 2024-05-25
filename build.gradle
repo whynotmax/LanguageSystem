@@ -1,9 +1,11 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'java'
+apply plugin: 'maven-publish'
 
-group = 'dev.mzcy'
-version = '1.0-SNAPSHOT'
+group = 'com.github.whynotmax'
+version = '1.0.0'
+
+sourceCompatibility = 17 // java 17
+targetCompatibility = 17
 
 repositories {
     mavenCentral()
@@ -35,6 +37,16 @@ java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     targetCompatibility = JavaVersion.VERSION_17
     sourceCompatibility = JavaVersion.VERSION_17
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
 }
 
 compileJava {
