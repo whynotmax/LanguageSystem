@@ -13,6 +13,7 @@ import lombok.experimental.NonFinal;
 import lombok.extern.java.Log;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.io.File;
@@ -37,8 +38,9 @@ public class LanguageSystem {
      * @param javaPlugin        the JavaPlugin instance
      * @param mongoCredentials  the MongoDB credentials
      * <br>
-     * @apiNote                 This constructor is for internal use only, and it can be changed or removed at any time. Use {@link LanguageSystemBuilder} instead.
+     * This method is for internal use only, and it can be changed or removed at any time.
      */
+    @ApiStatus.Internal
     public LanguageSystem(JavaPlugin javaPlugin, Credentials mongoCredentials) {
         this.javaPlugin = javaPlugin;
         this.mongoCredentials = mongoCredentials;
@@ -50,8 +52,9 @@ public class LanguageSystem {
     /**
      * Load all languages from the database.
      * <br>
-     * @apiNote This method is for internal use only, and it can be changed or removed at any time.
+     * This method is for internal use only, and it can be changed or removed at any time.
      */
+    @ApiStatus.Internal
     private void onEnable() {
         MongoManager mongoManager = new MongoManager(mongoCredentials)
                 .registerCodec(new TimeZoneCodec());
@@ -87,8 +90,9 @@ public class LanguageSystem {
      * @return                          the translated string, or the key if the translation is not found
      * @throws IllegalArgumentException if the language with the specified language code does not exist
      * <br>
-     * @apiNote             This method is for internal use only, and it can be changed or removed at any time. Use {@link LanguageService#getTranslation(String, String, String...)} instead.
+     * This method is for internal use only, and it can be changed or removed at any time.
      */
+    @ApiStatus.Internal
     public String getTranslation(String key, String languageCode, String... replacements) {
         for (Language language : loadedLanguages) {
             if (language.getLanguageCode().equals(languageCode)) {
@@ -106,7 +110,13 @@ public class LanguageSystem {
         throw new IllegalArgumentException("Language with code " + languageCode + " not found");
     }
 
-
+    /**
+     * Create a new language.
+     * @param newLanguage the new language
+     * <br>
+     * This method is for internal use only, and it can be changed or removed at any time.
+     */
+    @ApiStatus.Internal
     public void create(Language newLanguage) {
         newLanguage.setLanguageFile(new File("plugins/" + javaPlugin.getName() + "/languages/lang_" + newLanguage.getLanguageCode() + ".properties"));
         //Check if the language already exists

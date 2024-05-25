@@ -31,6 +31,10 @@ public class LanguageService {
         return languageSystem.getTranslation(key, languageCode, replacements);
     }
 
+    /**
+     * Get a translation for a key in a specific language.
+     * @param language  the language code
+     */
     public void create(Language language) {
         languageSystem.create(language);
     }

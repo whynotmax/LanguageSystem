@@ -6,6 +6,7 @@ import dev.mzcy.entity.model.LanguagePlayer;
 import dev.mzcy.entity.repository.LanguagePlayerRepository;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Map;
 import java.util.UUID;
@@ -27,9 +28,9 @@ public class LanguagePlayerManager {
 
     /**
      * Load all language players from the database.
-     *
-     * @apiNote This method is asynchronous. This method is for internal use only, and it can be changed or removed at any time.
+     * This method is asynchronous. This method is for internal use only, and it can be changed or removed at any time.
      */
+    @ApiStatus.Internal
     public void loadLanguagePlayers() {
         languagePlayerRepository.asyncFindAll().thenAccept(languagePlayers -> {
             for (LanguagePlayer languagePlayer : languagePlayers) {
@@ -78,9 +79,9 @@ public class LanguagePlayerManager {
      * Save all language players.
      *
      * @param async whether the operation should be asynchronous
-     *
-     * @apiNote This method is for internal use only, and it can be changed or removed at any time.
+     * This method is asynchronous. This method is for internal use only, and it can be changed or removed at any time.
      */
+    @ApiStatus.Internal
     public void saveLanguagePlayers(boolean async) {
         for (LanguagePlayer languagePlayer : languagePlayerMap.values()) {
             saveLanguagePlayer(languagePlayer, async);
