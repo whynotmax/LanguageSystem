@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+}
+
+group = 'dev.mzcy'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+
+    maven { url 'https://reposilite.koboo.eu/releases' }
+
+    maven { url 'https://jitpack.io' }
+
+    maven { url 'https://s01.oss.sonatype.org/content/groups/public/' }
+
+    maven { url 'https://repo.rapture.pw/repository/maven-releases/' }
+
+    maven { url 'https://repo.infernalsuite.com/repository/maven-snapshots/' }
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:$spigot"
+
+    compileOnly "eu.koboo.atcommand:core:$at_Command"
+    compileOnly "eu.koboo.atcommand:platform-spigot:$at_Command"
+    compileOnly "eu.koboo.en2do:en2do:$en2do"
+
+    compileOnly "org.projectlombok:lombok:$lombok"
+    annotationProcessor "org.projectlombok:lombok:$lombok"
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+compileJava {
+    options.fork = true
+    options.incremental = true
+    options.encoding = 'UTF-8'
+    options.release.set(17)
+}
